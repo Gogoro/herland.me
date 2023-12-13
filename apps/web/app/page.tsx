@@ -1,6 +1,6 @@
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 
-import Header from "../components/header";
+import Header from "@/components/header";
 
 export default function Page(): JSX.Element {
   return (

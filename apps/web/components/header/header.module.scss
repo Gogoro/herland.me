@@ -34,7 +34,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
 
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
 
   .logo {

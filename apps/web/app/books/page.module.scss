@@ -1,0 +1,26 @@
+.main {
+  max-width: var(--max-width);
+  padding: 40px;
+  margin: 20px auto;
+
+  .lists {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-top: 20px;
+      margin-left: 20px;
+
+      li {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
