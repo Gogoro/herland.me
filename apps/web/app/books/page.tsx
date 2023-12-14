@@ -2,9 +2,9 @@ import Header from '@/components/header';
 import styles from './page.module.scss';
 import Link from 'next/link';
 
-import sanity from '@/utils/sanity';
+import { sanity, generateImageUrl} from '@/utils/sanity';
 
-async function getBooks() {
+async function getBooks() : Promise<BookCategory[]> {
   return await sanity.fetch(
     `
     *[_type == "bookCategory"] | order(order asc)
@@ -12,10 +12,10 @@ async function getBooks() {
         title,
         slug,
         order,
-        "books": *[ _type == "book" && book._ref == ^.bookCategory._id ] {
+        "books": *[ _type == "book" && references(^._id) ] | order(order asc) {
           name,
-          image,
-          "author": author->{
+          url,
+          authors[]->{
             name
           }
         }
@@ -23,15 +23,26 @@ async function getBooks() {
     `,
     {
       next: {
-        tags: ['integrations']
+        tags: ['books']
       }
     }
   );
 }
 
+const renderAuthors = (authors:Author[]):string => {
+  console.log('authors', authors)
+  if (!authors) return ''
+
+  return authors.map((author, index) => {
+    if (index === 0) return author.name
+    else if (index === authors.length - 1) return ` and ${author.name}`
+    else return `, ${author.name}`
+  }).join('')
+}
+
 export default async function Page(): Promise<JSX.Element> {
-  const books = await getBooks()
-  console.log('books', books)
+  const books:BookCategory[] = await getBooks()
+  // console.log('books', books)
 
   return (
     <>
@@ -41,15 +52,18 @@ export default async function Page(): Promise<JSX.Element> {
         <p><big>Reading is a calming activity that gives me balance. I get filled up with knowledge and relax at the same time 🧘 Check out my lists bellow, and feel free to send me tips on <Link href={`https://x.com/oleherland`} target={'_blank'}>x.com/oleherland</Link> 🫶 I’m always looking for great books to read!</big></p>
 
         <div className={styles.lists}>
-          {books.map((bookCategory) => (
+          {books.map((bookCategory:BookCategory) => (
             <div className={styles.list}>
               <h2>{bookCategory.title}</h2>
               <hr />
-              <ul>
-                {bookCategory.books.map((book) => (
-                  <li><Link href={`https://www.goodreads.com/book/show/4099.The_Fountainhead`} target={'_blank'}>{book.name}</Link> by {book.author.name}</li>
+              <ol>
+                {bookCategory.books.map((book:Book) => (
+                  <li>
+                    <div><Link href={book.url} target={'_blank'}>{book.name}</Link></div>
+                    <div>by {renderAuthors(book.authors)}</div>
+                  </li>
                 ))}
-              </ul>
+              </ol>
             </div>
           ))}
         </div>

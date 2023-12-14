@@ -20,18 +20,25 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'order',
+      title: 'Order',
+      type: 'number',
     }),
     defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
+      name: 'url',
+      title: 'URL',
+      type: 'url'
+    }),
+    defineField({
+      name: 'authors',
+      title: 'Authors',
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [{
+          type: 'author'
+        }],
+      }],
     }),
     defineField({
       name: 'bookCategory',
@@ -43,7 +50,16 @@ export default defineType({
   preview: {
     select: {
       title: 'name',
-      media: 'image',
-    },
+      subtitle: 'order',
+    }
   },
+  orderings: [
+    {
+      title: 'Order',
+      name: 'order',
+      by: [
+        {field: 'order', direction: 'asc'}
+      ]
+    }
+  ]
 })
