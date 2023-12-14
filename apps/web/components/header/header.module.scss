@@ -84,6 +84,11 @@
 
       text-decoration: none;
 
+      &.active {
+        text-decoration: underline;
+        font-weight: bold;
+      }
+
       span {
         display: inline-block;
         animation: none;

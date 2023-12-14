@@ -23,27 +23,24 @@ async function getBooks() : Promise<BookCategory[]> {
     `,
     {
       next: {
-        tags: ['books']
+        tags: ['book']
       }
     }
   );
 }
 
 const renderAuthors = (authors:Author[]):string => {
-  console.log('authors', authors)
-  if (!authors) return ''
+  if (!authors) return '';
 
   return authors.map((author, index) => {
-    if (index === 0) return author.name
-    else if (index === authors.length - 1) return ` and ${author.name}`
-    else return `, ${author.name}`
-  }).join('')
+    if (index === 0) return author.name;
+    else if (index === authors.length - 1) return ` and ${author.name}`;
+    else return `, ${author.name}`;
+  }).join('');
 }
 
 export default async function Page(): Promise<JSX.Element> {
-  const books:BookCategory[] = await getBooks()
-  // console.log('books', books)
-
+  const books:BookCategory[] = await getBooks();
   return (
     <>
       <Header />

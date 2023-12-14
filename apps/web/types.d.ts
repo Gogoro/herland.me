@@ -5,7 +5,9 @@ interface Asset {
 
 interface Author {
   name: string
-  slug: string
+  slug: {
+    current: string
+  },
   image: {
     asset: Asset
   }
@@ -13,14 +15,18 @@ interface Author {
 
 interface Book {
   name: string
-  slug: string
+  slug: {
+    current: string
+  },
   url: string,
   authors: Author[]
 }
 
 interface BookCategory {
   title: string
-  slug: string
+  slug: {
+    current: string
+  },
   order: number
   books: Book[]
 }
@@ -30,4 +36,16 @@ interface GenerateImageUrlParams {
   width?: number
   height?: number
   fit?: 'clip' | 'crop' | 'fill' | 'fillmax' | 'max' | 'scale' | 'min'
+}
+
+interface Project {
+  name: string
+  slug: {
+    current: string
+  },
+  description: string,
+  order: number
+  image: {
+    asset: Asset
+  }
 }
