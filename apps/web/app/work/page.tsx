@@ -1,4 +1,5 @@
 import Header from '@/components/header';
+import Footer from '@/components/footer';
 import styles from './page.module.scss';
 import Link from 'next/link';
 
@@ -48,6 +49,7 @@ export default async function Page(): Promise<JSX.Element> {
           ))}
         </div>
       </main>
+      <Footer />
     </>
   );
 }

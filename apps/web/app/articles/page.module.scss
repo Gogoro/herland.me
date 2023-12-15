@@ -1,0 +1,33 @@
+.wrapper {
+  max-width: var(--max-width);
+  padding: 40px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 60px;
+
+    .aside {
+      img {
+        display: block;
+        max-width: 100%;
+      }
+    }
+    main {
+      article {
+        &:first-child {
+          h2 {
+            margin-top: 0;
+          }
+        }
+        h2 {
+          font-size: 32px;
+          line-height: 48px;
+        }
+        p {
+          font-size: 20px;
+          line-height: 32px;
+        }
+      }
+    }
+}

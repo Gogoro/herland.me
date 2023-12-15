@@ -51,3 +51,18 @@ interface Project {
   },
   content: any
 }
+
+interface Category {
+  title: string,
+  description: string,
+}
+
+interface Post {
+  title: string
+  slug: {
+    current: string
+  },
+  categories: Category[]
+  publishedAt: string
+  content: any
+}
