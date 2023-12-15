@@ -38,7 +38,8 @@ export default async function Page(): Promise<JSX.Element> {
           {projects.map((project:Project, index:number) => (
             <Link href={`/work/${project.slug.current}`} 
                   className={`${styles.project} ${index < 4 ? styles.big : ''}`}
-                  style={{backgroundImage: project.image && `url('${generateImageUrl({asset: project.image.asset, height: 600, width: 600, fit: 'crop'})}')`}}>
+                  style={{backgroundImage: project.image && `url('${generateImageUrl({asset: project.image.asset, height: 600, width: 600, fit: 'crop'})}')`}}
+                  key={`work-${index}`}>
               <div className={styles.text}>
                 <p>{project.thumbnailText}</p>
                 <h2>{project.name}</h2>
