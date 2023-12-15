@@ -11,7 +11,7 @@ async function getProjects() : Promise<Project[]> {
       {
         name,
         slug,
-        description,
+        thumbnailText,
         order,
         image
       }
@@ -40,7 +40,7 @@ export default async function Page(): Promise<JSX.Element> {
                   className={`${styles.project} ${index < 4 ? styles.big : ''}`}
                   style={{backgroundImage: project.image && `url('${generateImageUrl({asset: project.image.asset, height: 600, width: 600, fit: 'crop'})}')`}}>
               <div className={styles.text}>
-                <p>{project.description}</p>
+                <p>{project.thumbnailText}</p>
                 <h2>{project.name}</h2>
               </div>
             </Link>

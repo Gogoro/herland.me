@@ -43,9 +43,11 @@ interface Project {
   slug: {
     current: string
   },
+  thumbnailText: string,
   description: string,
   order: number
   image: {
     asset: Asset
-  }
+  },
+  content: any
 }

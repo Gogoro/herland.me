@@ -1,6 +1,7 @@
 import Header from '@/components/header';
 import styles from './page.module.scss';
 import Link from 'next/link';
+import PortableText from '@/components/portable-text';
 
 import { sanity, generateImageUrl} from '@/utils/sanity';
 
@@ -13,7 +14,8 @@ async function getProject(slug:string) : Promise<Project> {
         slug,
         description,
         order,
-        image
+        image,
+        content
       }
     `, {
       slug: slug,
@@ -35,8 +37,8 @@ export default async function Page({params}: {params: {slug: string}}): Promise<
             <h1>{project.name}</h1>
             <p><big>{project.description}</big></p>
 
-            <div className={styles.projects}>
-              asd
+            <div className={styles.content}>
+              <PortableText value={project.content} />
             </div>
           </>
         }

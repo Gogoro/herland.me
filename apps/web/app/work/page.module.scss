@@ -20,6 +20,13 @@
 
       overflow: hidden;
 
+      box-shadow: 0 5px 0px 0px rgba(0, 0, 0, 0.0);
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+      }
+
       &.big {
         grid-column: span 2;
       }
