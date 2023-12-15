@@ -41,9 +41,7 @@ export default async function Page(): Promise<JSX.Element> {
           <p>I love my family, technology, science, philosophy and investing. I’m here to make an impact 💥</p>
         </aside>
         <main>
-          {posts.map((post, index) => {
-            console.log(post.categories)
-            return (
+          {posts.map((post, index) => (
               <article key={`article-${index}`}>
                 <h2>{post.title}</h2>
                 <p><small>Published: {new Date(post.publishedAt).toLocaleDateString("en-GB")}</small></p>
@@ -51,7 +49,7 @@ export default async function Page(): Promise<JSX.Element> {
                 <p><b>Categories:</b> {post?.categories?.map(c => c.title)}</p>
               </article>
             )
-          })}
+          )}
         </main>
       </div>
       <Footer />
