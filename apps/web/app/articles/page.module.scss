@@ -1,3 +1,19 @@
+.backButton {
+  margin-bottom: 20px;
+
+  a {
+    display: block;
+    background-color: #5d2ca6;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    
+    border-radius: 15px;
+  }
+}
+
 .wrapper {
   max-width: var(--max-width);
   padding: 40px;
@@ -11,6 +27,7 @@
       img {
         display: block;
         max-width: 100%;
+        border-radius: 15px;
       }
     }
     main {

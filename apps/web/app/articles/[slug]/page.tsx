@@ -1,16 +1,16 @@
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import styles from './page.module.scss';
-import Link from 'next/link';
+import styles from '../page.module.scss';
 import PortableText from '@/components/portable-text';
+import Link from 'next/link';
 
-import { sanity} from '@/utils/sanity';
+import { sanity, generateImageUrl} from '@/utils/sanity';
 
 
-async function getPosts() : Promise<Post[]> {
+async function getPost(slug:string) : Promise<Post> {
   return await sanity.fetch(
     `
-    *[_type == "post"] | order(postedAt asc)
+    *[_type == "post" && slug.current == $slug][0]
       {
         title,
         slug,
@@ -22,6 +22,7 @@ async function getPosts() : Promise<Post[]> {
       }
     `,
     {
+      slug: slug,
       next: {
         tags: ['post']
       }
@@ -29,27 +30,27 @@ async function getPosts() : Promise<Post[]> {
   );
 }
 
-export default async function Page(): Promise<JSX.Element> {
-  const posts:Post[] = await getPosts();
+export default async function Page({params}: {params: {slug: string}}): Promise<JSX.Element> {
+  const post:Post = await getPost(params.slug);
   return (
     <>
       <Header />
       <div className={styles.wrapper}>
         <aside className={styles.aside}>
+          <div className={styles.backButton}>
+            <Link href="/articles">← All articles 💭</Link>
+          </div>
           <img src="/ole-profile.png" />
           <p>I’m Ole Herland, a Full Stack Developer based in Norway 🇧🇻 </p>
           <p>I love my family, technology, science, philosophy and investing. I’m here to make an impact 💥</p>
         </aside>
         <main>
-          {posts.map((post, index) => (
-              <article key={`article-${index}`}>
-                <h2><Link href={`/articles/${post.slug.current}`}>{post.title}</Link></h2>
-                <p><small>Published: {new Date(post.publishedAt).toLocaleDateString("en-GB")}</small></p>
-                <PortableText value={post.content} />
-                <p><b>Categories:</b> {post?.categories?.map(c => c.title)}</p>
-              </article>
-            )
-          )}
+          <article>
+            <h2>{post.title}</h2>
+            <p><small>Published: {new Date(post.publishedAt).toLocaleDateString("en-GB")}</small></p>
+            <PortableText value={post.content} />
+            <p><b>Categories:</b> {post?.categories?.map(c => c.title)}</p>
+          </article>
         </main>
       </div>
       <Footer />

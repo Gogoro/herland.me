@@ -55,6 +55,9 @@ interface Project {
 interface Category {
   title: string,
   description: string,
+  slug: {
+    current: string
+  },
 }
 
 interface Post {
