@@ -12,8 +12,6 @@ export default async function Page(): Promise<JSX.Element> {
           <div className={styles.text}>
             <h1>About me, Ole Herland <span className={styles.wiggle}>👋</span></h1>
             <p><big>I’m a serial entrepreneur and Full-Stack developer based in Norway 🇧🇻 I’ve built and sold two businesses, and been part of multiple startups. I have two goals in life: To be a good person and to pursue the occupation that I love ❤️</big></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae mollis augue, id auctor neque. Ut faucibus in elit eu ornare. Sed quis ipsum rutrum, egestas est in, interdum felis. Mauris mattis felis in ligula pharetra suscipit. Integer nec est ac risus feugiat accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam quis porttitor nulla. Fusce ornare sagittis auctor.</p>
-            <p>Donec malesuada, orci vitae rutrum blandit, dui ex semper nibh, ut facilisis mauris elit eget leo. Fusce enim neque, euismod a nulla quis, fermentum accumsan arcu. Vestibulum purus sapien, congue a condimentum vitae, molestie iaculis felis. Donec et vehicula lectus. Etiam mattis vitae massa nec rhoncus. Nulla nec consequat lorem, vitae mattis magna. Etiam dignissim tellus nisl, sed molestie urna cursus a.</p>
           </div>
           <div>
             <div className={styles.image}>
