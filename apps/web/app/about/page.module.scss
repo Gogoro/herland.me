@@ -1,0 +1,164 @@
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  33% { transform: rotate(10deg); }
+  66% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes pump {
+  0% { transform: scale(1); }
+  33% { transform: scale(1.2); }
+  66% { transform: scale(0.8); }
+  100% { transform: scale(1); }
+}
+
+.wiggle {
+  display: inline-block;
+  animation: wiggle 0.8s infinite;
+  animation-iteration-count: 5;
+  animation-timing-function: ease-in-out
+}
+
+.main {
+  max-width: var(--max-width);
+  padding: 40px;
+  margin: 20px auto;
+
+  @media (max-width: 720px) {
+    padding: 10px 20px;
+    margin: 10px auto;
+  }
+
+  .wrapper {
+    display: grid;
+    gap: 60px;
+    grid-template-columns: 2fr 1fr;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+
+    .text {
+      @media (max-width: 900px) {
+        order: 2;
+      }
+    }
+
+    .image {
+      display: inline-block;
+      position: relative;
+      max-width: 100%;
+
+      @media (max-width: 900px) {
+        max-width: 200px;
+      }
+  
+      &::after {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        top: 15px;
+        right: -15px;
+        bottom: -15px;
+        left: 15px;
+  
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 20px;
+      }
+  
+      img {
+        max-width: 100%;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+.skills {
+
+  h2 {
+    margin-top: 100px;
+    margin-bottom: 60px;
+  }
+  
+  .skillsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 20px;
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+    }
+
+    h3 {
+      font-size: 24px;
+      line-height: 30px;
+
+      border-bottom: 1px solid #333;
+    }
+
+    ul {
+      padding-top: 20px;
+      list-style: none;
+
+      li {
+
+        &:hover::before {
+          animation: pump 0.8s infinite;
+          animation-iteration-count: 5;
+          animation-timing-function: ease-in-out
+        }
+        &::before {
+          display: inline-block;
+          margin-right: 5px;
+  
+          transform: scale(1);
+          transition: transform 0.2s ease-in-out;
+        }
+        &:nth-of-type(7n+1)::before {
+          content: '🫀 ';
+        }
+        &:nth-of-type(7n+2)::before {
+          content: '❤️ ';
+        }
+        &:nth-of-type(7n+3)::before {
+          content: '🩷 ';
+        }
+        &:nth-of-type(7n+4)::before {
+          content: '🧡 ';
+        }
+        &:nth-of-type(7n+5)::before {
+          content: '💛 ';
+        }
+        &:nth-of-type(7n+6)::before {
+          content: '💚 ';
+        }
+        &:nth-of-type(7n+7)::before {
+          content: '💙 ';
+        }
+        &:nth-of-type(7n+8)::before {
+          content: '🩵 ';
+        }
+        &:nth-of-type(7n+9)::before {
+          content: '💜 ';
+        }
+        &:nth-of-type(7n+10)::before {
+          content: '🤎 ';
+        }
+        &:nth-of-type(7n+11)::before {
+          content: '🖤 ';
+        }
+        &:nth-of-type(7n+12)::before {
+          content: '🩶 ';
+        }
+        &:nth-of-type(7n+13)::before {
+          content: '🤍 ';
+        }
+        &:nth-of-type(7n+14)::before {
+          content: '🖤 ';
+        }
+      }
+    }
+  }
+}

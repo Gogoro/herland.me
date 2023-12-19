@@ -20,20 +20,6 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
-    }),
-    defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
       name: 'categories',
       title: 'Categories',
       type: 'array',
@@ -45,21 +31,21 @@ export default defineType({
       type: 'datetime',
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
+      name: 'content',
+      title: 'Content',
+      type: 'array',
+      of: [
+        {type: 'block'},
+        {type: 'image', name: 'wideImage', title: 'Wide Image', options: {hotspot: true}},
+        {type: 'image', name: 'smallImage', title: 'Small Image', options: {hotspot: true}},
+        {type: 'image', name: 'microImage', title: 'Micro Image', options: {hotspot: true}},
+      ]
     }),
   ],
 
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
     },
   },
 })
