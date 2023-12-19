@@ -1,0 +1,27 @@
+.main {
+  max-width: var(--max-width);
+  padding: 40px;
+  margin: 20px auto;
+
+
+  .content {
+    margin-top: 50px;
+
+    > p, ul, ol, h2, h3, h4, h5, h6 {
+      max-width: 800px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    > ul, ol {
+      padding-left: 40px;
+      margin-bottom: 40px;
+    }
+    p, li {
+      font-size: 20px;
+      line-height: 32px;
+    }
+    p {
+      // margin-bottom: 40px;
+    }
+  }
+}
