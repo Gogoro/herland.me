@@ -82,6 +82,14 @@ export default async function Page(): Promise<JSX.Element> {
                 <li>Google Play Store</li>
               </ul>
             </section>
+            <section>
+              <h3>🤪 Misc</h3>
+              <ul>
+                <li>Marketing</li>
+                <li>Board work</li>
+                <li>Accounting</li>
+              </ul>
+            </section>
           </div>
         </div>
       </main>

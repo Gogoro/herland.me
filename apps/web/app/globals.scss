@@ -44,6 +44,18 @@ h2 {
   }
 }
 
+h3 {
+  font-size:  22px;
+  line-height: 30px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+
+  @media (max-width: 720px) {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
 hr {
   height: 2px;
   border: none;

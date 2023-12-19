@@ -35,6 +35,7 @@ export default async function Page({params}: {params: {slug: string}}): Promise<
       <main className={styles.main}>
         {project && 
           <>
+            <Link href={`/work`}>← Back to work 😉</Link>
             <h1>{project.name}</h1>
             <p><big>{project.description}</big></p>
 
