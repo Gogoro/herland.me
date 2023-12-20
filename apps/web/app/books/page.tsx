@@ -3,7 +3,14 @@ import Footer from '@/components/footer';
 import styles from './page.module.scss';
 import Link from 'next/link';
 
-import { sanity, generateImageUrl} from '@/utils/sanity';
+import { sanity} from '@/utils/sanity';
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Books | Ole Herland - Full Stack Developer",
+  description: "I love reading books 📚 Check out my lists bellow, and feel free to send me tips on x.com/oleherland 🫶 I’m always looking for great books to read!",
+};
 
 async function getBooks() : Promise<BookCategory[]> {
   return await sanity.fetch(

@@ -65,6 +65,9 @@ interface Post {
   slug: {
     current: string
   },
+  metaImage: {
+    asset: Asset
+  },
   categories: Category[]
   publishedAt: string
   content: any

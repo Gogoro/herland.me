@@ -5,6 +5,13 @@ import Link from 'next/link';
 
 import { sanity, generateImageUrl} from '@/utils/sanity';
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Work | Ole Herland - Full Stack Developer",
+  description: "Working on cool projects and being in the zone is one of the best feelings in the world 🤤 Bellow I’ve gathered some of my favourite projects I’ve been working on ✨",
+};
+
 async function getProjects() : Promise<Project[]> {
   return await sanity.fetch(
     `

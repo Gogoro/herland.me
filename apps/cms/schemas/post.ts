@@ -20,6 +20,14 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'metaImage',
+      title: 'Meta Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'categories',
       title: 'Categories',
       type: 'array',

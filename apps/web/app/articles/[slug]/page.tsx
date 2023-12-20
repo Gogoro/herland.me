@@ -3,9 +3,26 @@ import Footer from '@/components/footer';
 import styles from '../page.module.scss';
 import PortableText from '@/components/portable-text';
 import Link from 'next/link';
+import { Metadata, ResolvingMetadata } from 'next'
+
 
 import { sanity, generateImageUrl} from '@/utils/sanity';
 
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const article = await getPost(params.slug) 
+  const previousImages = (await parent).openGraph?.images || []
+  const image = article.metaImage ? generateImageUrl({asset: article.metaImage.asset, width: 1200, height: 630, fit: 'clip'}) : ''
+  return {
+    title: article.title,
+    description: article.content[0].children[0].text,
+    openGraph: {
+      images: [image, ...previousImages],
+    },
+  }
+}
 
 async function getPost(slug:string) : Promise<Post> {
   return await sanity.fetch(
@@ -14,6 +31,7 @@ async function getPost(slug:string) : Promise<Post> {
       {
         title,
         slug,
+        metaImage,
         categories[]->{
           title
         },

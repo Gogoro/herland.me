@@ -1,7 +1,13 @@
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import styles from './page.module.scss';
-import PortableText from '@/components/portable-text';
+import type { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Ole Herland - Full Stack Developer 👋",
+  description: "I’m Ole Herland, a Full Stack Developer based in Norway 🇧🇻 I love my family, technology, science, philosophy and investing. I’m here to make an impact 💥",
+};
 
 export default async function Page(): Promise<JSX.Element> {
   return (
