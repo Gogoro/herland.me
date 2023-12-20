@@ -40,9 +40,11 @@ export default async function Page({params}: {params: {slug: string}}): Promise<
           <div className={styles.backButton}>
             <Link href="/articles">← All articles 💭</Link>
           </div>
-          <img src="/ole-profile.png" />
-          <p>I’m Ole Herland, a Full Stack Developer based in Norway 🇧🇻 </p>
-          <p>I love my family, technology, science, philosophy and investing. I’m here to make an impact 💥</p>
+          <div className={styles.hidePhone}>
+            <img src="/ole-profile.png" />
+            <p>I’m Ole Herland, a Full Stack Developer based in Norway 🇧🇻 </p>
+            <p>I love my family, technology, science, philosophy and investing. I’m here to make an impact 💥</p>
+          </div>
         </aside>
         <main>
           <article>

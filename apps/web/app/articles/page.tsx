@@ -36,9 +36,11 @@ export default async function Page(): Promise<JSX.Element> {
       <Header />
       <div className={styles.wrapper}>
         <aside className={styles.aside}>
-          <img src="/ole-profile.png" />
-          <p>I’m Ole Herland, a Full Stack Developer based in Norway 🇧🇻 </p>
-          <p>I love my family, technology, science, philosophy and investing. I’m here to make an impact 💥</p>
+          <div className={styles.hidePhone}>
+            <img src="/ole-profile.png" />
+            <p>I’m Ole Herland, a Full Stack Developer based in Norway 🇧🇻 </p>
+            <p>I love my family, technology, science, philosophy and investing. I’m here to make an impact 💥</p>
+          </div>
         </aside>
         <main>
           {posts.map((post, index) => (

@@ -23,7 +23,17 @@
   grid-template-columns: 1fr 3fr;
   gap: 60px;
 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
     .aside {
+      @media (max-width: 768px) {
+        .hidePhone {
+          display: none;
+        }
+      }
       img {
         display: block;
         max-width: 100%;
