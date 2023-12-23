@@ -63,6 +63,7 @@ export default async function Page(): Promise<JSX.Element> {
               <ul>
                 <li>NodeJS</li>
                 <li>Python</li>
+                <li>PHP</li>
                 <li>PostgreSQL</li>
                 <li>MySQL</li>
                 <li>Redis</li>
@@ -89,11 +90,14 @@ export default async function Page(): Promise<JSX.Element> {
               </ul>
             </section>
             <section>
-              <h3>🤪 Misc</h3>
+              <h3>🤪 Misc + Tools</h3>
               <ul>
                 <li>Marketing</li>
                 <li>Board work</li>
                 <li>Accounting</li>
+                <li>Sanity.io</li>
+                <li>WordPress</li>
+                <li>CraftCMS</li>
               </ul>
             </section>
           </div>
