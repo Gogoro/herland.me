@@ -62,6 +62,7 @@ export default async function Page(): Promise<JSX.Element> {
               <h3>🤓 Backend</h3>
               <ul>
                 <li>NodeJS</li>
+                <li>Go</li>
                 <li>Python</li>
                 <li>PHP</li>
                 <li>PostgreSQL</li>
