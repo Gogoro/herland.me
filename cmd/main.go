@@ -113,8 +113,16 @@ func main() {
     return c.Render(200, "projects-page", nil)
   })
 
+  e.GET("/projects/:projectId", func(c echo.Context) error {
+    return c.Render(200, "project-page", nil)
+  })
+
   e.GET("/thoughts", func(c echo.Context) error {
     return c.Render(200, "thoughts-page", nil)
+  })
+
+  e.GET("/thoughts/:thoughtId", func(c echo.Context) error {
+    return c.Render(200, "thought-page", nil)
   })
 
   e.GET("/about-me", func(c echo.Context) error {

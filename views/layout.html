@@ -52,7 +52,7 @@
   document.addEventListener("DOMContentLoaded", (event) => {
     const atags = document.getElementsByTagName("a")
     for (const tag of atags) {
-      if (tag.pathname.includes(window.location.pathname)) {
+      if (window.location.pathname.includes(tag.pathname)) {
         tag.classList.add("active")
       }
     }
