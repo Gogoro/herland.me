@@ -1,24 +1,105 @@
 {{ block "index" . }}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Herland.me | Tech Consultant and Full-Stack+</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <script src="/static/htmx.min.js"></script>
-  </head>
+    {{ template "layout-start" . }}
+      <div class="homepage">
 
-  <body>
-    <div id="count">
-    Count {{ .Count }}
+        {{ template "logo" . }}
+        {{ template "nav" . }}
+
+        <canvas id="game-canvas" />
+        
+        <script>
+          // ## TODOS:
+          // - [x] Game Loop
+          // - [ ] Game state
+          // - [ ] Food spawn
+          // - [ ] Snake Spawn
+          // - [ ] Snake movement
+          // - [ ] Manual controls
+          // - [ ] Snake direction
+          // - [ ] Snake tail growth
+          // - [ ] Snake eat
+          // - [ ] Snake crash (game over)
+          // - [ ] Lives
+          // - [ ] Toggle Music
+          // - [ ] Fake AI to move the snake
+
+          const canvas = document.getElementById("game-canvas");
+          let start, previousTimeStamp;
+          let done = false;
+          let gameObjects = []
+
+
+          // This is the main game loop
+          function gameLoop(timeStamp) {
+            if (start === undefined) {
+              start = timeStamp;
+            }
+            const elapsed = timeStamp - start;
+
+
+            if (previousTimeStamp !== timeStamp) {
+              // draw()
+            }
+
+            if (!done) {
+              // Draw next if not done
+              window.requestAnimationFrame(gameLoop);
+            }
+            previousTimeStamp = timeStamp;
+          }
+
+          window.requestAnimationFrame(gameLoop);
+        </script>
+
     </div>
-    <button hx-target="#count" hx-post="/count">Count</button>
-  </body>
-</html>
+    {{ template "layout-end" . }}
 {{ end }}
 
 
-{{ block "count" . }}
-  Count {{ .Count }}
+
+
+
+
+
+
+
+{{ block "form" . }}
+<form hx-swap="outerHTML" hx-post="/contacts">
+  Name: <input {{ if .Values.name }} value="{{ .Values.name}}" {{ end }} name="name" type="text" />
+  Email: <input {{ if .Values.email }} value="{{ .Values.email}}" {{ end }} name="email" type="email" />
+
+  {{ if .Errors.email }}
+    <div style="color: red;">{{ .Errors.email }}
+  {{ end }}
+
+  <button type="submit">Submit</button>
+</form>
+{{ end }} 
+
+{{ block "display" . }}
+<div id="contacts" style="display: flex; flex-direction: column">
+  {{ range .Contacts }}
+    {{ template "contact" . }}
+  {{ end }}
+</div>
 {{ end }}
+
+
+{{ block "contact" . }}
+    <div class="contact" id="contact-{{ .Id }}" style="display: flex;">
+      <div 
+        hx-target="#contact-{{ .Id }}" 
+        hx-swap="outerHTML swap:500"
+        hx-delete="/contacts/{{ .Id }}" 
+        style="margin-right: 5px; color: red; cursor: pointer;">Delete</div>
+      Name: <span>{{ .Name }}</span> 
+      Email: <span>{{ .Email }}</span>
+    </div>
+{{ end }} 
+
+{{ block "oob-contact" . }}
+    <div id="contacts" hx-swap-oob="afterbegin">
+      {{ template "contact" . }}
+    </div>
+{{ end }} 
+
