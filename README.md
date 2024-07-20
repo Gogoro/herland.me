@@ -3,20 +3,23 @@
 My personal website, also found at [herland.me](https://herland.me) 🥳
 
 ## Tech Stack
-- [Next.js](https://nextjs.org/)
-- [Sanity](https://www.sanity.io/)
-- [Vercel](https://vercel.com/)
+I wanted to combine two thoughts that has been running in the community for a while. 
+
+1. The No Build movement where you don't need to compile everything. Just keeping plain CSS and JavaScript.
+2. The movement to simpler tools, like HTMX + Go. Fewer abstractions, less frameworks and libraries.
+
+At first, I was sceptical, but I must say I love the feeling of keeping it light. It's a dream to work with, and it feels rock solid.
+
+- [Go](https://go.dev/)
+- [HTMX](https://htmx.org/)
 
 ## Development
-I've used Turborepo to manage this monorepo. To get started, run:
-1. Install [Turborepo](https://turbo.build/repo/docs/installing)
-2. Use node version `v20.9.0`
-3. Copy `.env-default -> .env` and fill in the missing values
-4. Run `npm install` in the root directory
-5. Run `npm run dev` to start the development server
+1. Install Golang
+2. Install Air
+3. Run "air" in the cmd, and you got the server up and running + hot reloading.
 
 ## Deployment
-All commits to the `main` branch are automatically deployed to [Vercel](https://vercel.com/) and [Sanity](https://www.sanity.io/).
+The deployment is done through GitHub Actions.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
