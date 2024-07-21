@@ -6,6 +6,7 @@ CREATE TABLE projects (
   name TEXT NOT NULL,
   slug TEXT UNIQUE NOT NULL,
   thumb TEXT NOT NULL,
+  intro TEXT,
   content TEXT
 );
 

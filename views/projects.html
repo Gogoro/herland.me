@@ -1,4 +1,8 @@
 {{ block "projects-page" . }}
+    <details>
+    <summary>Data</summary>
+    {{.}}
+    </details>
     {{ template "layout-start" . }}
    
     <div class="projects"> 
@@ -8,12 +12,9 @@
         <h2 class="mt-0 mb-3">Current projects</h2>
 
         <div class="featured-projects">
-          <div>
-            <img src="#" alt="Naturoppdraget via Veniro" />
-            <h3>Naturoppdraget</h3>
-            <p>I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.</p>
-            <a href="/projects/naturoppdraget" class="button">Read more</a>
-          </div>
+          {{ range .CurrentProjects }}
+            {{ template "project-block" . }}
+          {{ end }}
           <div>
             <img src="#" alt="Naturoppdraget via Veniro" />
             <h3>Naturoppdraget</h3>
@@ -67,20 +68,32 @@
     {{ template "layout-end" . }}
 {{ end }}
 
+{{ block "project-block" . }}
+  <div>
+    <img src="{{ .Thumb }}" alt="Naturoppdraget via Veniro" />
+    <h3>{{ .Name }}</h3>
+    <p>{{ .Intro }}</p>
+    <a href="/projects/{{ .Slug }}" class="button">Read more</a>
+  </div>
+{{ end }}
+
+
+
+
+
 {{ block "project-page" . }}
     {{ template "layout-start" . }}
-   
     <div class="project"> 
       {{ template "header" . }}
       <div class="content small">
         <div class="center mb-5">
-          <a href="/projects">Projects</a> / Naturoppdraget
+          <a href="/projects">Projects</a> / {{ .Name }}
         </div>
 
-        <h1 class="center">Naturoppdraget</h1>
-        <img src="#" alt="naturoppdraget" />
+        <h1 class="center">{{ .Name }}</h1>
+        <img src="{{ .Thumb }}" alt="naturoppdraget" />
 
-        <p>test</p>
+        {{ .Content }}
       </div>
     </div>
 

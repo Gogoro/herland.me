@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"gogoro/herland.me/cmd/controllers"
 	"gogoro/herland.me/cmd/database"
 	"gogoro/herland.me/cmd/router"
 )
@@ -10,13 +8,6 @@ import (
 func main() {
 	database.InitDB()
 	defer database.CloseDB()
-
-	projects, err := controllers.GetProjects()
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(projects)
-
 	router.InitRouter()
 }
 
