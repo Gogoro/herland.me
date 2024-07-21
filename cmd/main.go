@@ -1,11 +1,23 @@
 package main
 
 import (
-  "gogoro/herland.me/cmd/router"
+	"fmt"
+	"gogoro/herland.me/cmd/controllers"
+	"gogoro/herland.me/cmd/database"
+	"gogoro/herland.me/cmd/router"
 )
 
 func main() {
-  router.InitRouter()
+	database.InitDB()
+	defer database.CloseDB()
+
+	projects, err := controllers.GetProjects()
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(projects)
+
+	router.InitRouter()
 }
 
 /*
