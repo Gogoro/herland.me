@@ -1,14 +1,19 @@
 package main
 
 import (
-	"gogoro/herland.me/cmd/database"
 	"gogoro/herland.me/cmd/router"
+	"gogoro/herland.me/cmd/server"
+	"gogoro/herland.me/cmd/service"
 )
 
 func main() {
-	database.InitDB()
-	defer database.CloseDB()
-	router.InitRouter()
+	// Start with initializing all the connections needed
+	server := server.Start()
+	defer server.Stop()
+
+	srv := service.Init(server)
+
+	router.InitRouter(srv)
 }
 
 /*

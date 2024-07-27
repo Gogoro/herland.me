@@ -11,18 +11,17 @@ import (
 )
 
 type DatabaseInterface interface {
-	InitDB() *Database
+	InitDB() (*Database, error)
+	CloseDB() error
 }
 
 type Database struct {
-	DB *sql.DB
+	Client *sql.DB
 }
 
-var DBCon *Database
-
-func errorAndClose(err error) {
+func errAndPanic(err error) {
 	fmt.Println(err)
-	os.Exit(1)
+	panic(err)
 }
 
 func InitDB() *Database {
@@ -31,13 +30,13 @@ func InitDB() *Database {
 	// Create a db folder if none exists
 	err := os.Mkdir("db", 0750)
 	if err != nil && !os.IsExist(err) {
-		errorAndClose(err)
+		errAndPanic(err)
 	}
 
 	// Get current path
 	ex, err := os.Executable()
 	if err != nil {
-		panic(err)
+		errAndPanic(fmt.Errorf("Failed to get current path %w", err))
 	}
 
 	fn := env.GetStringOrDefault("SQLITE_PATH", filepath.Join(filepath.Dir(ex), "db"))
@@ -45,26 +44,21 @@ func InitDB() *Database {
 
 	db, err := sql.Open("sqlite", fn)
 	if err != nil {
-		fmt.Println("Error in db")
-		errorAndClose(err)
+		errAndPanic(fmt.Errorf("Failed to open SQL connection %w", err))
 	}
 
 	fi, err := os.Stat("db")
 	if err != nil {
-		errorAndClose(err)
+		errAndPanic(fmt.Errorf("Failed to get stats from DB %w", err))
 	}
 
 	fmt.Printf("%s size: %v\n", "db", fi.Size())
 
-	DBCon = &Database{
-		DB: db,
+	return &Database{
+		Client: db,
 	}
-
-	return nil
 }
 
-func CloseDB() {
-	if err := DBCon.DB.Close(); err != nil {
-		errorAndClose(err)
-	}
+func (d *Database) CloseDB() error {
+	return d.Client.Close()
 }

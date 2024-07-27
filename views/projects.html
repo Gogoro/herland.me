@@ -15,58 +15,20 @@
           {{ range .CurrentProjects }}
             {{ template "project-block" . }}
           {{ end }}
-          <div>
-            <img src="#" alt="Naturoppdraget via Veniro" />
-            <h3>Naturoppdraget</h3>
-            <p>I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.</p>
-            <a href="#" class="button">Read more</a>
-          </div>
-          <div>
-            <img src="#" alt="Naturoppdraget via Veniro" />
-            <h3>Naturoppdraget</h3>
-            <p>I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.</p>
-            <a href="#" class="button">Read more</a>
-          </div>
-          <div>
-            <img src="#" alt="Naturoppdraget via Veniro" />
-            <h3>Naturoppdraget</h3>
-            <p>I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.  I’ve agued both sides of the coin throughout my career.</p>
-            <a href="#" class="button">Read more</a>
-          </div>
         </div>
 
         <h2 class="mt-5 mb-3">Historic projects</h2>
         <div class="historic-projects">
-          <div>
-            <img src="#" alt="Naturoppdraget via Veniro" />
-            <h3>Naturoppdraget</h3>
-            <p>I’ve agued both sides of the coin throughout my career.</p>
-            <a href="#" class="button">Read more</a>
-          </div>
-          <div>
-            <img src="#" alt="Naturoppdraget via Veniro" />
-            <h3>Naturoppdraget</h3>
-            <p>I’ve agued both sides of the coin throughout my career.</p>
-            <a href="#" class="button">Read more</a>
-          </div>
-          <div>
-            <img src="#" alt="Naturoppdraget via Veniro" />
-            <h3>Naturoppdraget</h3>
-            <p>I’ve agued both sides of the coin throughout my career.</p>
-            <a href="#" class="button">Read more</a>
-          </div>
-          <div>
-            <img src="#" alt="Naturoppdraget via Veniro" />
-            <h3>Naturoppdraget</h3>
-            <p>I’ve agued both sides of the coin throughout my career.</p>
-            <a href="#" class="button">Read more</a>
-          </div>
+          {{ range .PastProjects }}
+            {{ template "project-block" . }}
+          {{ end }}
         </div>
       </div>
     </div>
 
     {{ template "layout-end" . }}
 {{ end }}
+
 
 {{ block "project-block" . }}
   <div>

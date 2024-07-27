@@ -5,6 +5,7 @@ import (
 	"io"
 
 	"gogoro/herland.me/cmd/controllers"
+	"gogoro/herland.me/cmd/server"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -24,7 +25,7 @@ func newTemplate() *Templates {
 	}
 }
 
-func InitRouter() {
+func InitRouter(s *server.Server) {
 	e := echo.New()
 	e.Use(middleware.Logger())
 	e.Static("/static", "static")
