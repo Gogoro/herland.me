@@ -9,11 +9,25 @@
     {{ template "layout-start" . }}
 
     <div class="admin-wrapper">
-      login
+      <form hx-swap="outerHTML" hx-post="/login">
+        <div>
+          <label style="display: block;">Code: </label>
+          <input  name="password" type="password" />
+        </div>
+
+        <div class="mt-1 mb-1">
+        {{ if .Error }}
+          <div style="color: red;">{{ .Error }}
+        {{ end }}
+        <div class="mt-1 mb-1">
+          <button type="submit">Login</button>
+        </div>
+      </form>
     </div>
 
     {{ template "layout-end" . }}
 {{ end }}
+
 
 {{ block "admin-projects" . }}
     {{ template "layout-start" . }}
@@ -21,7 +35,19 @@
     <div class="admin-wrapper">
       {{ template "admin-nav" . }}
 
-      projects
+      <a href="/admin/projects/null">Create new</a>
+    </div>
+
+    {{ template "layout-end" . }}
+{{ end }}
+
+{{ block "admin-project" . }}
+    {{ template "layout-start" . }}
+
+    <div class="admin-wrapper">
+      {{ template "admin-nav" . }}
+
+      Project!
     </div>
 
     {{ template "layout-end" . }}

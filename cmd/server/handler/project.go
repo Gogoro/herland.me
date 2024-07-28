@@ -1,4 +1,4 @@
-package HTTPServer
+package handler
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ type ProjectsData struct {
 	Error           string
 }
 
-func projectsHandler(c echo.Context) error {
+func Projects(c echo.Context) error {
 	currentProjects, err := project.GetList("CURRENT")
 	pastProjects, err := project.GetList("PAST")
 
@@ -44,7 +44,7 @@ type ProjectData struct {
 	Error    string
 }
 
-func projectHandler(c echo.Context) error {
+func Project(c echo.Context) error {
 	project, err := project.Get(c.Param("projectSlug"))
 
 	var pd ProjectData
