@@ -18,7 +18,32 @@ type Project struct {
 	Intro    string
 }
 
-func Get(projectSlug string) (Project, error) {
+type ProjectUpdate struct {
+	Category string
+	Name     string
+	Slug     string
+	Thumb    string
+	Content  string
+	Intro    string
+}
+
+func Get(id string) (Project, error) {
+	ctx, cancelFunc := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancelFunc()
+
+	var project Project
+	err := database.DBCon.QueryRowContext(ctx, "SELECT id, category, name, slug, COALESCE(thumb, ''), COALESCE(content, ''), COALESCE(intro, '') FROM projects WHERE id = ?", id).Scan(&project.Id, &project.Category, &project.Name, &project.Slug, &project.Thumb, &project.Content, &project.Intro)
+	if err == sql.ErrNoRows {
+		return project, nil
+	}
+	if err != nil {
+		return project, err
+	}
+
+	return project, nil
+}
+
+func GetSlug(projectSlug string) (Project, error) {
 	ctx, cancelFunc := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancelFunc()
 
@@ -95,6 +120,24 @@ func Create(category, name, slug, thumb, content string) (bool, error) {
 		ctx,
 		"insert into projects (category, name, slug, thumb, content) VALUES (?, ?, ?, ?, ?)",
 		category, name, slug, thumb, content,
+	)
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}
+
+func Update(id string, data ProjectUpdate) (bool, error) {
+	ctx, cancelFunc := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancelFunc()
+	query := `UPDATE projects 
+			SET (category, name, slug, thumb, content) = (?, ?, ?, ?, ?)
+		WHERE
+			id = ?`
+	_, err := database.DBCon.ExecContext(
+		ctx,
+		query,
+		data.Category, data.Name, data.Slug, data.Thumb, data.Content, id,
 	)
 	if err != nil {
 		return false, err

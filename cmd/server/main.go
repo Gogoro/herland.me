@@ -61,6 +61,7 @@ func main() {
 	r.GET("/thoughts", handler.AdminThoughts)
 	r.GET("/projects", handler.AdminProjects)
 	r.GET("/projects/:projectSlug", handler.AdminProject)
+	r.POST("/projects/:projectId", handler.PostAdminProject)
 
 	// Start the server
 	e.Logger.Fatal(e.Start(":42069"))

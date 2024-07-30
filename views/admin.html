@@ -1,4 +1,5 @@
 {{ block "admin-nav" . }}
+  <header style="justify-content: center;"><h1>Herland Admin</h1></header>
   <nav>
     <a href="/admin/thoughts">Thoughts</a>
     <a href="/admin/projects">Projects</a>
@@ -8,21 +9,23 @@
 {{ block "admin-login" . }}
     {{ template "layout-start" . }}
 
-    <div class="admin-wrapper">
-      <form hx-swap="outerHTML" hx-post="/login">
-        <div>
-          <label style="display: block;">Code: </label>
-          <input  name="password" type="password" />
-        </div>
+    <div class="admin dark">
+      <div class="admin-wrapper">
+        <form hx-swap="outerHTML" hx-post="/login">
+          <div>
+            <label style="display: block;">Code: </label>
+            <input  name="password" type="password" />
+          </div>
 
-        <div class="mt-1 mb-1">
-        {{ if .Error }}
-          <div style="color: red;">{{ .Error }}
-        {{ end }}
-        <div class="mt-1 mb-1">
-          <button type="submit">Login</button>
-        </div>
-      </form>
+          <div class="mt-1 mb-1">
+          {{ if .Error }}
+            <div style="color: red;">{{ .Error }}
+          {{ end }}
+          <div class="mt-1 mb-1">
+            <button type="submit">Login</button>
+          </div>
+        </form>
+      </div>
     </div>
 
     {{ template "layout-end" . }}
@@ -32,18 +35,20 @@
 {{ block "admin-projects" . }}
     {{ template "layout-start" . }}
 
-    <div class="admin-wrapper">
-      {{ template "admin-nav" . }}
+    <div class="admin dark">
+      <div class="admin-wrapper">
+        {{ template "admin-nav" . }}
 
-      <a href="/admin/projects/null">Create new</a>
+        <a href="/admin/projects/null">Create new</a>
 
-      <ul>
-      {{ range .Projects }}
-        <li>
-          <a href="/admin/projects/{{ .Slug }}">{{ .Name }}</a>
-        </li>
-      {{ end }}
-      </ul>
+        <ul>
+        {{ range .Projects }}
+          <li>
+            <a href="/admin/projects/{{ .Slug }}">{{ .Name }}</a>
+          </li>
+        {{ end }}
+        </ul>
+      </div>
     </div>
 
     {{ template "layout-end" . }}
@@ -52,28 +57,66 @@
 {{ block "admin-project" . }}
     {{ template "layout-start" . }}
 
-    <div class="admin-wrapper">
-      {{ template "admin-nav" . }}
+    <div class="admin dark">
+      <div class="admin-wrapper">
+        {{ template "admin-nav" . }}
 
-      <div>
-      <a href="/admin/projects">Back</a>
+        <div>
+          <a href="/admin/projects"><< Back</a>
+        </div>
+
+        {{ template "admin-project-form" . }}
       </div>
-
-      {{ .Project.Name }}
-      {{ .Project.Category }}
-      {{ .Project.Slug }}
     </div>
 
     {{ template "layout-end" . }}
 {{ end }}
 
+
+{{ block "admin-project-form" . }}
+  <form hx-swap="outerHTML" hx-post="/admin/projects/{{ .Project.Id }}" class="project-form">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" {{ if .Project.Name }} value="{{ .Project.Name }}"{{ end }} />
+    </div>
+    <div>
+      <label for="category">Category:</label>
+      <select name="category" id="category" {{ if .Project.Category }} value="{{ .Project.Category }}"{{ end }}>
+        <option value="CURRENT">Current</option>
+        <option value="PAST">Past</option>
+      </select>
+    </div>
+    <div>
+      <label for="slug">Slug:</label>
+      <input type="text" name="slug" id="slug" {{ if .Project.Slug }} value="{{ .Project.Slug }}"{{ end }} />
+    </div>
+    <div>
+      <label for="intro">Intro:</label>
+      <input type="text" name="intro" id="intro" {{ if .Project.Intro }} value="{{ .Project.Intro }}"{{ end }} />
+    </div>
+    <div>
+      <label for="thumb">Thumb:</label>
+      <input type="text" name="thumb" id="thumb" {{ if .Project.Thumb }} value="{{ .Project.Thumb }}"{{ end }} />
+    </div>
+    <div>
+      <label for="content">Content:</label>
+      <input type="text" name="content" id="content" {{ if .Project.Content }} value="{{ .Project.Content }}"{{ end }} />
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+{{ end }}
+
 {{ block "admin-thoughts" . }}
     {{ template "layout-start" . }}
 
-    <div class="admin-wrapper">
-      {{ template "admin-nav" . }}
+    <div class="admin dark">
+      <div class="admin-wrapper">
+        {{ template "admin-nav" . }}
 
-      thoughts
+        thoughts
+      </div>
     </div>
 
     {{ template "layout-end" . }}

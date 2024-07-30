@@ -206,7 +206,8 @@ a {
 .dark li,
 .dark big,
 .dark small,
-.dark a {
+.dark a,
+.dark label{
   color: var(--color-light-100);
 }
 
@@ -393,7 +394,8 @@ body:has(.homepage) {
 
 /* About styles */
 body:has(.thoughts),
-body:has(.about) {
+body:has(.about),
+body:has(.admin) {
   min-height: 100vh;
   background-color: var(--color-purple-500);
 }
@@ -483,3 +485,33 @@ body:has(.about) {
 
   font-size: 24px; 
 }
+
+
+.project-form {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  gap: 20px;
+}
+
+.project-form div label,
+.project-form div input {
+  display: block;
+}
+
+.project-form div label {
+  margin-bottom: 5px;
+
+  font-size: 18px;
+}
+
+.project-form div select,
+.project-form div input {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+
+  font-size: 18px;
+}
+

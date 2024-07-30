@@ -45,7 +45,7 @@ type ProjectData struct {
 }
 
 func Project(c echo.Context) error {
-	project, err := project.Get(c.Param("projectSlug"))
+	project, err := project.GetSlug(c.Param("projectSlug"))
 
 	var pd ProjectData
 
