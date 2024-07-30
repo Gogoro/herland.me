@@ -36,6 +36,14 @@
       {{ template "admin-nav" . }}
 
       <a href="/admin/projects/null">Create new</a>
+
+      <ul>
+      {{ range .Projects }}
+        <li>
+          <a href="/admin/projects/{{ .Slug }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+      </ul>
     </div>
 
     {{ template "layout-end" . }}
@@ -47,7 +55,13 @@
     <div class="admin-wrapper">
       {{ template "admin-nav" . }}
 
-      Project!
+      <div>
+      <a href="/admin/projects">Back</a>
+      </div>
+
+      {{ .Project.Name }}
+      {{ .Project.Category }}
+      {{ .Project.Slug }}
     </div>
 
     {{ template "layout-end" . }}

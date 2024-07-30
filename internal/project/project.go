@@ -23,7 +23,7 @@ func Get(projectSlug string) (Project, error) {
 	defer cancelFunc()
 
 	var project Project
-	err := database.DBCon.QueryRowContext(ctx, "SELECT id, category, name, slug, thumb, COALESCE(content, ''), intro FROM projects WHERE slug = ?", projectSlug).Scan(&project.Id, &project.Category, &project.Name, &project.Slug, &project.Thumb, &project.Content, &project.Intro)
+	err := database.DBCon.QueryRowContext(ctx, "SELECT id, category, name, slug, COALESCE(thumb, ''), COALESCE(content, ''), COALESCE(intro, '') FROM projects WHERE slug = ?", projectSlug).Scan(&project.Id, &project.Category, &project.Name, &project.Slug, &project.Thumb, &project.Content, &project.Intro)
 	if err == sql.ErrNoRows {
 		return project, nil
 	}
@@ -38,9 +38,24 @@ func GetList(category string) ([]Project, error) {
 	ctx, cancelFunc := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancelFunc()
 
+	query := `SELECT 
+		id, category, name, slug, COALESCE(thumb, ''), COALESCE(content, ''), COALESCE(intro, '') 
+		FROM projects 
+		WHERE category = ?
+		ORDER BY 
+			CASE WHEN slug = 'draft' THEN 0 ELSE 1 END,
+			name`
+	if category == "" {
+		query = `SELECT id, category, name, slug, COALESCE(thumb, ''), COALESCE(content, ''), COALESCE(intro, '') 
+		FROM projects
+		ORDER BY 
+			CASE WHEN slug = 'draft' THEN 0 ELSE 1 END,
+			name`
+	}
+
 	rows, err := database.DBCon.QueryContext(
 		ctx,
-		"SELECT id, category, name, slug, thumb, COALESCE(content, ''), intro FROM projects WHERE category = ?",
+		query,
 		category,
 	)
 
