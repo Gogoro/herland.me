@@ -2,7 +2,7 @@
 -- +goose StatementBegin
 CREATE TABLE projects (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  category TEXT CHECK( category IN ("CURRENT", "PAST") ) NOT NULL DEFAULT "CURRENT",
+  category TEXT CHECK( category IN ("CURRENT", "PAST", "DRAFT") ) NOT NULL DEFAULT "CURRENT",
   name TEXT NOT NULL,
   slug TEXT UNIQUE NOT NULL,
   thumb TEXT NOT NULL,

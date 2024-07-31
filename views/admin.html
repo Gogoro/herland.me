@@ -81,9 +81,10 @@
     </div>
     <div>
       <label for="category">Category:</label>
-      <select name="category" id="category" {{ if .Project.Category }} value="{{ .Project.Category }}"{{ end }}>
-        <option value="CURRENT">Current</option>
-        <option value="PAST">Past</option>
+      <select name="category" id="category" >
+        <option value="CURRENT" {{ if eq .Project.Category  "CURRENT" }}selected{{ end }}>Current</option>
+        <option value="PAST" {{ if eq .Project.Category  "PAST" }}selected{{ end }}>Past</option>
+        <option value="DRAFT" {{ if eq .Project.Category  "DRAFT" }}selected{{ end }}>Draft</option>
       </select>
     </div>
     <div>
@@ -100,7 +101,10 @@
     </div>
     <div>
       <label for="content">Content:</label>
-      <input type="text" name="content" id="content" {{ if .Project.Content }} value="{{ .Project.Content }}"{{ end }} />
+      <div style="background-color: white; padding: 10px;border-radius:5px;">
+        <input type="hidden" name="content" id="content" {{ if .Project.Content }} value="{{ .Project.Content }}"{{ end }} />
+        <trix-editor input="content"></trix-editor>
+      </div>
     </div>
     <div>
       <button type="submit">Submit</button>

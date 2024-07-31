@@ -3,6 +3,9 @@ package handler
 import (
 	"fmt"
 	"gogoro/herland.me/internal/project"
+	"io"
+	"os"
+	"path/filepath"
 
 	"github.com/labstack/echo/v4"
 	"github.com/maragudk/env"
@@ -41,7 +44,7 @@ func AdminProject(c echo.Context) error {
 		return c.Render(200, "admin-project", AdminProjectData{Project: p})
 	}
 
-	created, err := project.Create("CURRENT", "DRAFT", "draft", "", "")
+	created, err := project.Create("DRAFT", "DRAFT", "draft", "", "")
 	if err != nil || created != true {
 		fmt.Println(fmt.Errorf("Failed to create project %v", err))
 	}
@@ -71,4 +74,47 @@ func PostAdminProject(c echo.Context) error {
 	}
 
 	return c.Render(200, "admin-project-form", AdminProjectData{Project: p})
+}
+
+func PostAdminAttachment(c echo.Context) error {
+	_ = env.Load(".env")
+
+	file, err := c.FormFile("file")
+	if err != nil {
+		return err
+	}
+
+	src, err := file.Open()
+	if err != nil {
+		return err
+	}
+
+	defer src.Close()
+
+	// create a destination file
+
+	err = os.Mkdir("static", 0750)
+	if err != nil && !os.IsExist(err) {
+		return err
+	}
+
+	err = os.Mkdir("static/store", 0750)
+	if err != nil && !os.IsExist(err) {
+		return err
+	}
+
+	fn := filepath.Join("./static/store/", file.Filename)
+	dst, err := os.Create(fn)
+	if err != nil {
+		return err
+	}
+	defer dst.Close()
+
+	// upload the file to destination path
+	_, err = io.Copy(dst, src)
+	if err != nil {
+		return err
+	}
+
+	return c.NoContent(204)
 }
