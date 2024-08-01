@@ -40,9 +40,6 @@
 {{ end }}
 
 
-
-
-
 {{ block "project-page" . }}
     {{ template "layout-start" . }}
     <div class="project"> 
@@ -53,7 +50,6 @@
         </div>
 
         <h1 class="center">{{ .Name }}</h1>
-        <img src="{{ .Thumb }}" alt="naturoppdraget" />
 
         {{ .Content }}
       </div>

@@ -30,6 +30,11 @@ body {
   font-family: var(--main-font);
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .contact.htmx-swapping {
   opacity: 0;
   transition: opacity 500ms ease-in;
@@ -209,6 +214,10 @@ a {
 .dark a,
 .dark label{
   color: var(--color-light-100);
+}
+
+trix-editor * {
+  color: black !important;
 }
 
 /* misc */

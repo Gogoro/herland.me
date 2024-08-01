@@ -97,6 +97,7 @@
     </div>
     <div>
       <label for="thumb">Thumb:</label>
+      {{ if .Project.Thumb }}<img src="{{ .Project.Thumb }}" width="200" height="auto" />{{ end }}
       <input type="text" name="thumb" id="thumb" {{ if .Project.Thumb }} value="{{ .Project.Thumb }}"{{ end }} />
     </div>
     <div>

@@ -5,6 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Herland.me | Tech Consultant and Full-Stack+</title>
+    <script>
+      document.addEventListener("trix-before-initialize", () => {
+        Trix.config.blockAttributes.heading1.tagName = "h2"
+      });
+    </script>
     <link rel="stylesheet" type="text/css" href="/static/trix.css">
     <script type="text/javascript" src="/static/trix.umd.min.js"></script>
     <link rel="stylesheet" href="/static/styles.css" />

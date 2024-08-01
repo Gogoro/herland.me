@@ -3,6 +3,7 @@ package handler
 import (
 	"fmt"
 	"gogoro/herland.me/internal/project"
+	"html/template"
 
 	"github.com/labstack/echo/v4"
 )
@@ -39,7 +40,7 @@ type ProjectData struct {
 	Name     string
 	Slug     string
 	Thumb    string
-	Content  string
+	Content  template.HTML
 	Intro    string
 	Error    string
 }
@@ -59,8 +60,9 @@ func Project(c echo.Context) error {
 	pd.Name = project.Name
 	pd.Slug = project.Slug
 	pd.Thumb = project.Thumb
-	pd.Content = project.Content
+	pd.Content = template.HTML(project.Content)
 	pd.Intro = project.Intro
 	pd.Error = ""
+
 	return c.Render(200, "project-page", pd)
 }

@@ -56,10 +56,10 @@ document.body.addEventListener("htmx:beforeSwap", function (evt) {
     })
 
     xhr.addEventListener("load", function(event) {
-      if (xhr.status == 204) {
+      if (xhr.responseText && xhr.status == 200) {
         var attributes = {
-          url: "/static/store/" + key,
-          href: "/static/store/" + key + "?content-disposition=attachment"
+          url: xhr.responseText,
+          href: xhr.responseText 
         }
         console.log("attributes", attributes)
         successCallback(attributes)
@@ -81,3 +81,4 @@ document.body.addEventListener("htmx:beforeSwap", function (evt) {
     return data
   }
 })();
+

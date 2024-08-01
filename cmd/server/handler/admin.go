@@ -55,6 +55,17 @@ func AdminProject(c echo.Context) error {
 func PostAdminProject(c echo.Context) error {
 	_ = env.Load(".env")
 
+	file, err := c.FormFile("file")
+	if err != nil {
+		fmt.Printf("Err: %v", err)
+	}
+	fmt.Println(file)
+
+	pog, err := project.Get(c.Param("projectId"))
+	if err != nil {
+		fmt.Printf("No project or failed to find one %v", err)
+	}
+
 	updated, err := project.Update(c.Param("projectId"), project.ProjectUpdate{
 		Name:     c.FormValue("name"),
 		Category: c.FormValue("category"),
@@ -71,6 +82,11 @@ func PostAdminProject(c echo.Context) error {
 	p, err := project.Get(c.Param("projectId"))
 	if err != nil {
 		fmt.Printf("No project or failed to find one %v", err)
+	}
+
+	if pog.Slug != c.FormValue("slug") {
+		t := fmt.Sprintf("/admin/projects/%s", p.Slug)
+		c.Response().Header().Set("HX-Redirect", t)
 	}
 
 	return c.Render(200, "admin-project-form", AdminProjectData{Project: p})
@@ -115,6 +131,5 @@ func PostAdminAttachment(c echo.Context) error {
 	if err != nil {
 		return err
 	}
-
-	return c.NoContent(204)
+	return c.String(200, fmt.Sprintf("/static/store/%s", file.Filename))
 }
