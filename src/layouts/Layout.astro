@@ -40,7 +40,14 @@ import "../styles/global.css";
 
       window.localStorage.setItem("theme", theme);
     </script>
-    
+
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/pa-8G6DnK9VR7OhLGj5WPSZj.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+
     <slot name="head" />
   </head>
   <body class="zag-bg zag-text zag-transition font-mono">
