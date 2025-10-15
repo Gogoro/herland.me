@@ -1,0 +1,66 @@
+# Due to how Astro handles type inference with this structure,
+# we need to prefix all configuration keys with an underscore.
+
+[_.site]
+baseUrl = "https://herland.me"
+
+[_.globalMeta]
+title = "Ole Herland"
+description = "I'm a builder and L.O.V.E technology."
+longDescription = "I'm a builder with a passion for technology. I love working across disciplines making websites, web and mobile applications, integrations, APIs, CI/CD flow and infrastructure."
+cardImage = "/ole-herland.webp"
+keywords = ["web development", "design", "technology"]
+
+[_.blogMeta]
+title = "Ole Herland Blog"
+description = "Practical wisdom, unfiltered thoughts, and hot takes."
+longDescription = "Web development, tech trends, and the occasional programming mishap."
+cardImage = "/ole-herland.webp"
+keywords = ["web development", "design", "technology"]
+
+[_.projectMeta]
+title = "Ole Herland Projects"
+description = "A list of my web development projects and developer tools."
+longDescription = "All of my projects, including both frontend and full-stack applications."
+cardImage = "/ole-herland.webp"
+keywords = ["web development", "design", "technology"]
+
+[_.notFoundMeta]
+title = "Ole Herland 404"
+description = "The page you are looking for does not exist."
+longDescription = "The page you are looking for does not exist. Maybe it never existed. Spooky."
+cardImage = "/ole-herland.webp"
+
+[_.aboutMeta]
+title = "About Ole Herland"
+description = "Builder and technology enthusiast with an entrepreneurial background."
+longDescription = "Learn about Ole Herland's passion for technology, entrepreneurial journey, and the brands he's worked with over the years."
+cardImage = "/ole-herland.webp"
+keywords = ["web development", "entrepreneur", "technology", "full-stack developer"]
+
+[_.hero]
+title = "Ole Herland"
+subtitle = "I’m a builder and I L.O.V.E technology."
+image = "/ole-herland.webp"
+ctaText = "View Projects"
+ctaUrl = "/projects"
+
+[_.personal]
+name = "Ole Herland"
+githubProfile = "https://github.com/gogoro"
+twitterProfile = "https://x.com/oleherland"
+mediumProfile = "https://medium.com/@oleherland"
+linkedinProfile = "https://www.linkedin.com/in/oleherland/"
+
+[_.texts]
+articlesName = "Journal"
+projectsName = "Projects"
+viewAll = "View All"
+noArticles = "No journals found."
+noProjects = "No projects found."
+
+[_.menu]
+home = "/"
+projects = "/projects"
+blog = "/blog"
+about = "/about"

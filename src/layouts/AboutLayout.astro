@@ -1,0 +1,54 @@
+---
+import { getConfigurationCollection } from "../lib/utils";
+import Section from "../components/common/Section.astro";
+import Prose from "../components/Prose.astro";
+import Layout from "./Layout.astro";
+
+type Props = {
+  title: string;
+  description?: string;
+  longDescription?: string;
+};
+
+const { title, description, longDescription } = Astro.props;
+const { data: config } = await getConfigurationCollection();
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>{`${title} • ${config.personal.name}`}</title>
+    <meta name="description" content={longDescription ?? description ?? ""} />
+    <meta property="og:title" content={`${title} • ${config.personal.name}`} />
+    <meta property="og:description" content={description ?? ""} />
+    <meta property="og:url" content={`${config.site.baseUrl}/about`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image" content={config.globalMeta.cardImage?.startsWith('/') ? `${config.site.baseUrl}${config.globalMeta.cardImage}` : config.globalMeta.cardImage} />
+    <meta name="twitter:image" content={config.globalMeta.cardImage?.startsWith('/') ? `${config.site.baseUrl}${config.globalMeta.cardImage}` : config.globalMeta.cardImage} />
+    <meta
+      name="twitter:title"
+      content={`${title} • ${config.personal.name}`}
+    />
+    <meta name="twitter:description" content={description ?? ""} />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href={`${config.site.baseUrl}/about`} />
+  </Fragment>
+  <Section class="pt-8">
+    <div class="flex flex-col gap-4 mt-8 mb-16">
+      <img
+        src={config.hero.image}
+        alt={`${config.personal.name} Profile Image`}
+        class="rounded-full max-w-40 w-40 h-40 mb-4 z-0 grayscale"
+      />
+      <h1
+        class="text-3xl sm:text-4xl leading-normal sm:leading-normal font-display"
+      >
+        {title}
+      </h1>
+    </div>
+    <Prose>
+      <slot />
+    </Prose>
+    <p class="pt-8">~{config.personal.name}</p>
+  </Section>
+</Layout>

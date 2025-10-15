@@ -1,0 +1,9 @@
+- [x] Initialize the page
+- [/] Write texts
+- [/] External links
+- [/] Add prev projects
+- [/] RSS feed
+- [ ] Make sure content from my prev site is migrated
+- [ ] Setup ploi.io
+- [ ] Setup domain and SSL
+- [ ] Setup auto deploy on push
