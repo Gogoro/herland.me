@@ -47,8 +47,7 @@ about me page, rss feed, hosting, etc. While doing this, my product chugged alon
 Making money and running ads - in the background. Humming along.
 
 This is what I'm talking about. The momentum. Now I've finally started to build
-up "legacy" that I can have to stand on while I do the next thing.
+up "legacy" that I can stand on while I do the next thing.
 
-It's like walking up the stairs to get up, instead of just walking around the
-house over and over again. Finally. Finally I feel like I'm going up the right
-set of stairs, to my apartment.
+it's like having the dishwasher going while you clean the floors.
+You get parallel action going, that gives you more speed, more leverage, more momentum.
