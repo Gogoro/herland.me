@@ -34,7 +34,7 @@ const { data: config } = await getConfigurationCollection();
     <link rel="canonical" href={`${config.site.baseUrl}/about`} />
   </Fragment>
   <Section class="pt-8">
-    <div class="flex flex-col gap-4 mt-8 mb-16">
+    <div class="flex flex-col gap-4 mt-8 mb-16 max-w-prose">
       <img
         src={config.hero.image}
         alt={`${config.personal.name} Profile Image`}
@@ -49,6 +49,6 @@ const { data: config } = await getConfigurationCollection();
     <Prose>
       <slot />
     </Prose>
-    <p class="pt-8">~{config.personal.name}</p>
+    <p class="pt-8 max-w-prose">~{config.personal.name}</p>
   </Section>
 </Layout>

@@ -57,7 +57,7 @@ const { data: config } = await getConfigurationCollection();
     />
   </Fragment>
   <Section class="mt-8">
-    <div class="flex flex-col gap-4 mt-8 mb-16">
+    <div class="flex flex-col gap-4 mt-8 mb-16 max-w-prose">
       <h1 class="text-3xl sm:text-4xl leading-tight font-display">
         {frontmatter.title}
       </h1>
@@ -74,9 +74,9 @@ const { data: config } = await getConfigurationCollection();
       </div>
       <div class="flex gap-2">
         {
-          frontmatter.githubUrl ? (
-            <Anchor url={frontmatter.githubUrl} class="text-base" external>
-              GitHub
+          frontmatter.externalUrl ? (
+            <Anchor url={frontmatter.externalUrl} class="text-base" external>
+              External Link
             </Anchor>
           ) : null
         }

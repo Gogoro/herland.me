@@ -345,9 +345,9 @@ const project = defineCollection({
     tags: z.array(z.string()).optional(),
 
     /**
-     * The github repository URL for the project.
+     * An external URL for the project (e.g., GitHub, GitLab, live site, documentation, etc.).
      */
-    githubUrl: z.string().url().optional(),
+    externalUrl: z.string().url().optional(),
 
     /**
      * The live demo URL for the project, if applicable.

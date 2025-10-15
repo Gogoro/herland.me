@@ -5,12 +5,12 @@ export type Props = {
   title: string;
   description: string;
   url: string;
-  githubUrl?: string;
+  externalUrl?: string;
   liveUrl?: string;
   tags: string[];
 };
 
-const { title, description, url, githubUrl, liveUrl, tags } = Astro.props;
+const { title, description, url, externalUrl, liveUrl, tags } = Astro.props;
 ---
 
 <div class="relative flex flex-col gap-3 mb-8 hover-zag-dotted-grid">
@@ -20,9 +20,9 @@ const { title, description, url, githubUrl, liveUrl, tags } = Astro.props;
     </Anchor>
     <div class="flex gap-2">
       {
-        githubUrl ? (
-          <Anchor url={githubUrl} class="text-base" external>
-            GitHub
+        externalUrl ? (
+          <Anchor url={externalUrl} class="text-base" external>
+            Link
           </Anchor>
         ) : null
       }

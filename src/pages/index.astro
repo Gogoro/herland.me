@@ -10,10 +10,12 @@ import { getCollection } from "astro:content";
 
 const { data: config } = await getConfigurationCollection();
 
-const featuredProjects = (await getCollection("project", (e) => e.data.featured)).map((e) => ({
-  ...e.data,
-  url: `/projects/${e.data.slug}`,
-}));
+const featuredProjects = (await getCollection("project", (e) => e.data.featured))
+  .sort((a, b) => b.data.timestamp.valueOf() - a.data.timestamp.valueOf())
+  .map((e) => ({
+    ...e.data,
+    url: `/projects/${e.data.slug}`,
+  }));
 const featuredArticles = (await getCollection("blog", (e) => e.data.featured)).map((e) => ({
   ...e.data,
   url: `/blog/${e.data.slug}`
