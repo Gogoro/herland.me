@@ -18,15 +18,15 @@ Good music, good progress, good vibes.
 Then... the part that I always dread appears. The design and marketing part.
 
 Figuring out what colors my product should have, the logo, the catching marketing
-copy. Productivity derails immediately.
+copy. My productivity derails immediately.
 
 Today, after a good chat with my girlfriend I started to see this in a different light.
 
-1. I'm building very technical products.
-2. My main client base is businesses that are results-oriented.
-3. They want the solution, not a fancy packaging.
+1. I'm building very technical products
+2. My main clients are result-oriented businesses
+3. They want the solution, not a fancy packaging
 
-So, why am I stressing about this?
+Why am I overthinking this?
 
 The client is not going to care that I use Tailwind Plus components to build my
 marketing website. They are not going to care if my site is blue or green.
