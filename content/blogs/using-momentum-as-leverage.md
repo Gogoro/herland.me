@@ -3,7 +3,7 @@ title: Using Momentum as Leverage
 slug: using-momentum-as-leverage
 description: I broke through years of feeling stuck. Now I embrace raw momentum and legazy over perfectionism.
 longDescription: I broke through years of feeling stuck. Now I embrace raw momentum and legazy over perfectionism.
-cardImage: "https://herland.me/ole-herland.webp"
+cardImage: "/seo-img.png"
 tags: ["mindset", "productivity"]
 readTime: 4
 featured: true
