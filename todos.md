@@ -1,6 +1,3 @@
-- [/] Write texts
-- [ ] Create one blog posts
-
 # Projects, and writing
 
 - [ ] Update the Lappeliten project text
