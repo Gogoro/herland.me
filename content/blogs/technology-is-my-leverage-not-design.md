@@ -3,12 +3,14 @@ title: Technology is my leverage, not design
 slug: technology-is-my-leverage-not-design
 description: I'm an overthinker by default, and I always get stuck on the design part of building products.
 longDescription: I'm an overthinker by default, and I always get stuck on the design part of building products. I'm putting my foot down. No more!
-cardImage: "/seo-img.png"
+cardImage: "/journal/technology-is-my-leverage-not-design.png"
 tags: ["Product development", "mindset"]
 readTime: 2
 featured: true
 timestamp: 2025-10-16T10:30:02+00:00
 ---
+
+![Technology is my leverage, not design](/journal/technology-is-my-leverage-not-design.png)
 
 I know I'm not the only nerd in the world that struggles with design.
 
