@@ -79,6 +79,20 @@ Preview the production build locally:
 pnpm preview
 ```
 
-## License
+## License & Copyright
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### Code License
+
+The source code of this project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. You are free to use, modify, and distribute the code.
+
+### Content Copyright
+
+© 2025 Ole Andreas Jørnsen Herland
+
+The written content on this site (blog posts, project descriptions, personal stories, etc.) is my own creative work.
+
+Feel free to **read, enjoy, and get inspired** by it! But please don't copy-paste my writing or use it as your own. Write your own story in your own voice - it'll be way more authentic anyway!
+
+If you want to reference or quote something I've written, just reach out and ask. I'm usually pretty chill about it.
+
+For any questions or permission requests, drop me a line: ole.gogoro@gmail.com
