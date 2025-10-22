@@ -1,4 +1,4 @@
-- [ ] Newsletter signup
+- [/] Newsletter signup
 
 # Projects, and writing
 
