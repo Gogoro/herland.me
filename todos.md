@@ -1,5 +1,3 @@
-- [/] Newsletter signup
-
 # Projects, and writing
 
 - [ ] Update the Lappeliten project text
